@@ -1,27 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
+let url = "https://playground.4geeks.com/todo";
+
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+	const [data, setData] = useState([]);
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+	
+		fetch(`${url}/users/Tito`)
+			.then(resp => {
+				return resp.json();
+			})
+			.then(data => {
+				console.log(data);
+				setData(data);
+				
+			})
+			.catch(error => {
+				console.log(error);
+			})
+			
+	useEffect(() => {
+	}, [])
+
+	return (
+		<>
+			<div className="container">
+				<div>
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+		</>
 	);
 };
 
